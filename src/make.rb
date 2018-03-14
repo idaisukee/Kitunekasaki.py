@@ -2,7 +2,7 @@ alphabet = File.join(File.expand_path(File.dirname(__FILE__)), '../dat/alphabet.
 symbol = File.join(File.expand_path(File.dirname(__FILE__)), '../dat/symbol.dat')
 monster = File.join(File.expand_path(File.dirname(__FILE__)), '../dat/monster.dat')
 
-gentle = File.readlines(alphabet) + File.readlines(symbol)
+gentle = File.readlines(alphabet).reject{ |i| i == "\n" } + File.readlines(symbol).reject{ |i| i == "\n"} 
 gentle_array = gentle.map do |line|
 	i = line.strip.split(' ')
 	qwerty = i[0]
@@ -10,7 +10,7 @@ gentle_array = gentle.map do |line|
 	[qwerty, dvorak]
 end
 
-monster = File.readlines(monster)
+monster = File.readlines(monster).reject{ |i| i == "\n"} 
 monster_array = monster.map do |line|
 	i = line.strip.split(' ')
 	qwerty = i[0]
@@ -34,3 +34,18 @@ end
 
 
 puts product_lines.join(",\n")
+
+=begin
+array = Array.new
+mod = ['C', 'M', 'S']
+(0 .. mod.size).each do |i|
+	array << mod.combination(i).to_a
+end
+
+a =array.map do |i|
+	i.map do |j|
+		j.join('-')
+	end
+end.flatten
+p a
+=end

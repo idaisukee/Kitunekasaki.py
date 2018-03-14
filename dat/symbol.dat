@@ -4,3 +4,8 @@ comma w
 dot v
 slash z
 semicolon s
+minus right_brace
+equal left_brace
+left_brace slash
+right_brace equal
+insert backspace
