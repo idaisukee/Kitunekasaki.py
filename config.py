@@ -14,8 +14,11 @@ define_modmap({
 
 define_keymap(re.compile("Firefox|Google-chrome"), {
     # Ctrl+Alt+j/k to switch next/previous tab
-    K("M-c"): K("C-page_down"),
+    K("M-z"): K("C-w"),
     K("M-x"): K("C-page_up"),
+    K("M-c"): K("C-page_down"),
+    K("M-v"): K("C-t"),
+    K("M-s"): K("C-o"),
 }, "Firefox and Chrome")
 
 define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt"), {
