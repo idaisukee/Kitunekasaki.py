@@ -12,3 +12,5 @@ backspace Shift-left_brace
 Shift-backspace Shift-equal
 apostrophe minus
 Shift-apostrophe Shift-ro
+right_brace Shift-minus
+Shift-right_brace Shift-semicolon
