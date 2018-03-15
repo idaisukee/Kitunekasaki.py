@@ -9,7 +9,7 @@ define_modmap({
     Key.RO: Key.RIGHT_SHIFT,
     Key.BACKSLASH: Key.RIGHT_CTRL,
     Key.ENTER: Key.RIGHT_ALT,
-    Key.PAUSE: Key.EQUAL
+    Key.PAUSE: Key.EQUAL, 
 })
 
 define_keymap(re.compile("Firefox|Google-chrome"), {
@@ -35,6 +35,7 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt"), {
     K("C-f"): with_mark(K("end")),
     K("C-Shift-s"): with_mark(K("C-end")),
     K("C-Shift-d"): with_mark(K("C-home")),
+    K("C-g"): K("tab"),
     # Edit
     K("C-o"): [K("delete"), set_mark(False)],
     K("C-Shift-o"): [K("C-delete"), set_mark(False)],
