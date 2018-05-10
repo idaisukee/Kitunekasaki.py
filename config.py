@@ -10,7 +10,8 @@ define_modmap({
     Key.RO: Key.RIGHT_SHIFT,
     Key.BACKSLASH: Key.RIGHT_CTRL,
     Key.ENTER: Key.RIGHT_ALT,
-    Key.PAUSE: Key.EQUAL, 
+    Key.PAUSE: Key.EQUAL,
+    Key.SCROLLLOCK: Key.ENTER
 })
 
 define_keymap(re.compile("Firefox|Google-chrome"), {
