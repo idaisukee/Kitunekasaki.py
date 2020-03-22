@@ -2,7 +2,7 @@ alphabet = File.join(File.expand_path(File.dirname(__FILE__)), '../dat/alphabet.
 symbol = File.join(File.expand_path(File.dirname(__FILE__)), '../dat/symbol.dat')
 monster = File.join(File.expand_path(File.dirname(__FILE__)), '../dat/monster.dat')
 
-gentle = File.readlines(alphabet).reject{ |i| i == "\n" } + File.readlines(symbol).reject{ |i| i == "\n"} 
+gentle = File.readlines(alphabet).reject{ |i| i == "\n" } + File.readlines(symbol).reject{ |i| i == "\n"}
 gentle_array = gentle.map do |line|
 	i = line.strip.split(' ')
 	qwerty = i[0]
@@ -10,7 +10,7 @@ gentle_array = gentle.map do |line|
 	[qwerty, dvorak]
 end
 
-monster = File.readlines(monster).reject{ |i| i == "\n"} 
+monster = File.readlines(monster).reject{ |i| i == "\n"}
 monster_array = monster.map do |line|
 	i = line.strip.split(' ')
 	qwerty = i[0]
@@ -24,11 +24,20 @@ monster_modifiers = gentle_modifiers.reject do |i|
 end
 
 product_lines = ((gentle_modifiers.product gentle_array) + (monster_modifiers.product monster_array)).map do |i|
-	modifier = i[0]
+	old_modifier = i[0]
 	qwerty = i[1][0]
-	mod_qwerty = [modifier, qwerty].join('')
+	mod_qwerty = [old_modifier, qwerty].join('')
+	new_modifier =
+	case old_modifier
+	when 'C-Win-'
+		'C-'
+	when 'Shift-C-Win-'
+		'Shift-C-'
+	else
+		old_modifier
+	end
 	dvorak = i[1][1]
-	mod_dvorak = [modifier, dvorak].join('')
+	mod_dvorak = [new_modifier, dvorak].join('')
 	product_line = 	"K(\"#{mod_qwerty}\"): K(\"#{mod_dvorak}\")"
 end
 
